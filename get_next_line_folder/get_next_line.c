@@ -75,7 +75,7 @@ int			get_next_line(int fd, char **line)
 	ft_strdel(&buffer);
 	return (get_next_return(nbytes, &statico, line));
 }
-
+/*
 int    main(void)
 {
     int fd;
@@ -105,4 +105,4 @@ int    main(void)
     else
         printf("get_next_line retornou -1\n");
     return (0);
-}
+}*/
