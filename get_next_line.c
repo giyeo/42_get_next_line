@@ -60,6 +60,8 @@ int			get_next_line(int fd, char **line)
 
 	if (statico == 0)
 		statico = ft_strdup("");
+	if (BUFFER_SIZE <= 0)
+		return ERROR;
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buffer == 0 || fd < 0 || line == 0)
 		return ERROR;
@@ -74,28 +76,33 @@ int			get_next_line(int fd, char **line)
 	return (get_next_return(nbytes, &statico, line));
 }
 
-
-int			main(void)
+int    main(void)
 {
-	char **str;
-	int file;
-	file = open("2.txt", O_RDONLY);
+    int fd;
+    char *linha;
+    int i;
+    int retorno;
 
-	
-	int x = get_next_line(file, str);
-	printf("%d, %s\n", x, *str);
-	free(*str);
-	x = get_next_line(file, str);
-	printf("%d, %s\n", x, *str);
-	free(*str);
-	x = get_next_line(file, str);
-	printf("%d, %s\n", x, *str);
-	free(*str);
-	x = get_next_line(file, str);
-	printf("%d, %s\n", x, *str);
-	free(*str);
-	x = get_next_line(file, str);
-	printf("%d, %s\n", x, *str);
-	free(*str);
-	return 0;
+    i = 0;
+    // fd = 123;
+    fd = open("2.txt", O_RDONLY);
+    retorno = 1;
+    while (retorno == 1)
+    {
+        retorno = get_next_line(fd, &linha);
+        if (retorno != 1)
+            break;
+        printf("1: linha[%d] = '%s'(%ld); retorno = %i\n", i, linha, ft_strlen(linha), retorno);
+        free(linha);
+        i++;
+        // break;
+    }
+    if (retorno != -1)
+    {
+        printf("2: linha[%d] = '%s'(%ld); retorno = %i\n", i, linha, ft_strlen(linha), retorno);
+        free(linha);
+    }
+    else
+        printf("get_next_line retornou -1\n");
+    return (0);
 }

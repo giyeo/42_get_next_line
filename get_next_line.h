@@ -9,7 +9,7 @@
 #include <sys/resource.h>
 
 # define FT_LIMIT_FD	RLIMIT_NOFILE
-# define BUFFER_SIZE	6
+# define BUFFER_SIZE	42
 # define EOL			1
 # define FT_EOF			0
 # define ERROR			-1
