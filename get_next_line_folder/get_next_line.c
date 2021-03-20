@@ -28,9 +28,7 @@ static size_t			get_next_end(char *statico)
 	i = 0;
 	while (statico[i] != '\n' && statico[i] != '\0')
 		i++;
-	if (statico[i] == 0)
-		return i;
-	return i - 1;
+	return i;
 }
 
 static int			get_next_return(int n, char **statico, char **line)
@@ -40,7 +38,11 @@ static int			get_next_return(int n, char **statico, char **line)
 	temp = NULL;
 	*line = ft_substr(*statico, 0, get_next_end(*statico));
 	if (line == 0 || n < 0)
+	{
+		*line = NULL;
+		ft_strdel(statico);
 		return ERROR;
+	}
 	if (ft_strchr(*statico, '\n') != 0)
 	{
 		temp = ft_strdup(ft_strchr(*statico, '\n') + 1);
@@ -58,13 +60,16 @@ int			get_next_line(int fd, char **line)
 	char			*buffer;
 	int				nbytes;
 
-	if (statico == 0)
-		statico = ft_strdup("");
 	if (BUFFER_SIZE <= 0)
 		return ERROR;
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buffer == 0 || fd < 0 || line == 0)
+	{
+		ft_strdel(&buffer);
 		return ERROR;
+	}
+	if (statico == 0)
+		statico = ft_strdup("");
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
