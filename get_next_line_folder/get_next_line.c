@@ -39,7 +39,7 @@ static int			get_next_return(int n, char **statico, char **line)
 	*line = ft_substr(*statico, 0, get_next_end(*statico));
 	if (line == 0 || n < 0)
 	{
-		*line = NULL;
+		ft_strdel(&*line);
 		ft_strdel(statico);
 		return ERROR;
 	}
