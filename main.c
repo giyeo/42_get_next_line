@@ -4,15 +4,15 @@
 
 int main()
 {
-	int x[3];
-	char **str;
-	char **stra;
+	int x;
+	char *str;
 	
-	x[0] = open("1.txt", O_RDONLY);
-	get_next_line(x[0], str);
-	x[1] = open("2.txt", O_RDONLY);
-	get_next_line(x[1], stra);
-	printf("%s", str);
-	printf("%s", stra);
+	x = open("1.txt", O_RDONLY);
+	int value = get_next_line(x, &str);
+	printf("%s",value);
+
+	x = open("2.txt", O_RDONLY);
+	value = get_next_line(x, &str);
+	printf("%s",value);
 	return 0;
 }
