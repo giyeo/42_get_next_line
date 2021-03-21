@@ -6,7 +6,7 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:57:42 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 14:57:50 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 15:19:44 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 size_t			ft_strlen(const char *pointer);
 char			*ft_strjoin(char *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strchr(const char *str, int c);
+void			ft_strdel(char **str);
 #endif

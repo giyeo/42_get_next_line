@@ -6,7 +6,7 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:03:44 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 15:03:49 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 15:16:08 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@ static char		*ft_strdup(const char *s)
 	return (dup);
 }
 
-static void		ft_strdel(char **str)
+static char		*ft_strchr(const char *str, int c)
 {
-	if (*str && str)
+	int		counter;
+	int		len;
+	char	*result;
+
+	result = 0;
+	counter = 0;
+	len = ft_strlen(str) + 1;
+	while (counter < len)
 	{
-		free(*str);
-		*str = NULL;
+		if (str[counter] == c)
+		{
+			result = (char *)str + counter;
+			return (result);
+		}
+		counter++;
 	}
+	return (result);
 }
 
 static size_t	get_next_end(char *statico)

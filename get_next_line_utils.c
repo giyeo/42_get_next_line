@@ -6,13 +6,13 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:54:44 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 15:04:55 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 15:18:55 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void			*ft_memcpy(void *dest, const void *src, size_t n)
+void			*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*pointerdest;
 	unsigned char	*pointersource;
@@ -26,7 +26,7 @@ static void			*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-static size_t		ft_strlen(const char *pointer)
+size_t			ft_strlen(const char *pointer)
 {
 	size_t counter;
 
@@ -36,7 +36,7 @@ static size_t		ft_strlen(const char *pointer)
 	return (counter);
 }
 
-static char			*ft_strjoin(char *s1, char const *s2)
+char			*ft_strjoin(char *s1, char const *s2)
 {
 	char			*pointer;
 	size_t			i;
@@ -63,7 +63,7 @@ static char			*ft_strjoin(char *s1, char const *s2)
 	return (pointer);
 }
 
-static char			*ft_substr(char const *s, unsigned int start, size_t len)
+char			*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	char			*sub;
@@ -83,23 +83,11 @@ static char			*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char				*ft_strchr(const char *str, int c)
+void			ft_strdel(char **str)
 {
-	int		counter;
-	int		len;
-	char	*result;
-
-	result = 0;
-	counter = 0;
-	len = ft_strlen(str) + 1;
-	while (counter < len)
+	if (*str && str)
 	{
-		if (str[counter] == c)
-		{
-			result = (char *)str + counter;
-			return (result);
-		}
-		counter++;
+		free(*str);
+		*str = NULL;
 	}
-	return (result);
 }
