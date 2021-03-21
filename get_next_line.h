@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaulino <rpaulino@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 10:22:58 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 10:24:42 by rpaulino         ###   ########.fr       */
+/*   Created: 2021/03/21 14:57:42 by rpaulino          #+#    #+#             */
+/*   Updated: 2021/03/21 14:57:50 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ char			*ft_strjoin(char *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strchr(const char *str, int c);
 #endif
-

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpaulino <rpaulino@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 10:32:54 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 10:32:57 by rpaulino         ###   ########.fr       */
+/*   Created: 2021/03/21 15:03:44 by rpaulino          #+#    #+#             */
+/*   Updated: 2021/03/21 15:03:49 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_strdup(const char *s)
+static char		*ft_strdup(const char *s)
 {
 	size_t	len;
 	char	*dup;
@@ -24,7 +24,7 @@ static char	*ft_strdup(const char *s)
 	return (dup);
 }
 
-static void			ft_strdel(char **str)
+static void		ft_strdel(char **str)
 {
 	if (*str && str)
 	{
@@ -33,17 +33,17 @@ static void			ft_strdel(char **str)
 	}
 }
 
-static size_t			get_next_end(char *statico)
+static size_t	get_next_end(char *statico)
 {
 	size_t i;
 
 	i = 0;
 	while (statico[i] != '\n' && statico[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }
 
-static int			get_next_return(int n, char **statico, char **line)
+static int		get_next_return(int n, char **statico, char **line)
 {
 	char *temp;
 
@@ -53,32 +53,32 @@ static int			get_next_return(int n, char **statico, char **line)
 	{
 		ft_strdel(&*line);
 		ft_strdel(statico);
-		return ERROR;
+		return (ERROR);
 	}
 	if (ft_strchr(*statico, '\n') != 0)
 	{
 		temp = ft_strdup(ft_strchr(*statico, '\n') + 1);
 		ft_strdel(statico);
 		*statico = temp;
-		return EOL;
+		return (EOL);
 	}
 	ft_strdel(statico);
-	return FT_EOF;
+	return (FT_EOF);
 }
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char		*statico;
 	char			*buffer;
 	int				nbytes;
 
 	if (BUFFER_SIZE <= 0)
-		return ERROR;
+		return (ERROR);
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buffer == 0 || fd < 0 || line == 0)
 	{
 		ft_strdel(&buffer);
-		return ERROR;
+		return (ERROR);
 	}
 	if (statico == 0)
 		statico = ft_strdup("");
@@ -87,39 +87,8 @@ int			get_next_line(int fd, char **line)
 		buffer[nbytes] = '\0';
 		statico = ft_strjoin(statico, buffer);
 		if (ft_strchr(statico, '\n') != 0)
-			break;
+			break ;
 	}
 	ft_strdel(&buffer);
 	return (get_next_return(nbytes, &statico, line));
 }
-/*
-int    main(void)
-{
-    int fd;
-    char *linha;
-    int i;
-    int retorno;
-
-    i = 0;
-    // fd = 123;
-    fd = open("2.txt", O_RDONLY);
-    retorno = 1;
-    while (retorno == 1)
-    {
-        retorno = get_next_line(fd, &linha);
-        if (retorno != 1)
-            break;
-        printf("1: linha[%d] = '%s'(%ld); retorno = %i\n", i, linha, ft_strlen(linha), retorno);
-        free(linha);
-        i++;
-        // break;
-    }
-    if (retorno != -1)
-    {
-        printf("2: linha[%d] = '%s'(%ld); retorno = %i\n", i, linha, ft_strlen(linha), retorno);
-        free(linha);
-    }
-    else
-        printf("get_next_line retornou -1\n");
-    return (0);
-}*/
