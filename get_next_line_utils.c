@@ -1,15 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpaulino <rpaulino@student.42sp.org>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/21 10:31:15 by rpaulino          #+#    #+#             */
+/*   Updated: 2021/03/21 10:32:05 by rpaulino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-static void			ft_strdel(char **str)
-{
-	if (*str && str)
-	{
-		free(*str);
-		*str = NULL;
-	}
-}
-
-void			*ft_memcpy(void *dest, const void *src, size_t n)
+void		*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*pointerdest;
 	unsigned char	*pointersource;
@@ -23,7 +26,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-size_t			ft_strlen(const char *pointer)
+size_t		ft_strlen(const char *pointer)
 {
 	size_t counter;
 
@@ -32,8 +35,7 @@ size_t			ft_strlen(const char *pointer)
 		counter++;
 	return (counter);
 }
-
-char			*ft_strjoin(char *s1, char const *s2) //testar
+char		*ft_strjoin(char *s1, char const *s2)
 {
 	char			*pointer;
 	size_t			i;
@@ -59,8 +61,7 @@ char			*ft_strjoin(char *s1, char const *s2) //testar
 	ft_strdel(&s1);
 	return (pointer);
 }
-
-char			*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	char			*sub;
@@ -80,7 +81,7 @@ char			*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char			*ft_strchr(const char *str, int c)
+char		*ft_strchr(const char *str, int c)
 {
 	int		counter;
 	int		len;
@@ -100,3 +101,4 @@ char			*ft_strchr(const char *str, int c)
 	}
 	return (result);
 }
+
