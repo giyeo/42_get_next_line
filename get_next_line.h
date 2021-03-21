@@ -6,17 +6,15 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:57:42 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 11:56:10 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 15:35:05 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include <unistd.h>
-# include <fcntl.h>
 # include <stdlib.h>
 # include <stddef.h>
-# include <sys/resource.h>
 
 # define EOL			1
 # define FT_EOF			0
