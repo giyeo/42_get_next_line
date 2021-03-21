@@ -6,7 +6,7 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:03:44 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 11:36:37 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 15:16:08 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,15 @@ int				get_next_line(int fd, char **line)
 		ft_strdel(&buffer);
 		return (ERROR);
 	}
-	if (statico[fd] == 0)
-		statico[fd] = ft_strdup("");
+	if (statico == 0)
+		statico = ft_strdup("");
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
-		statico[fd] = ft_strjoin(statico, buffer);
-		if (ft_strchr(statico[fd], '\n') != 0)
+		statico = ft_strjoin(statico, buffer);
+		if (ft_strchr(statico, '\n') != 0)
 			break ;
 	}
 	ft_strdel(&buffer);
-	return (get_next_return(nbytes, &statico[fd], line));
+	return (get_next_return(nbytes, &statico, line));
 }
