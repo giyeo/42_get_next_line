@@ -6,11 +6,11 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:03:44 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 11:51:39 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 12:26:07 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char		*ft_strdup(const char *s)
 {
@@ -80,14 +80,14 @@ static int		get_next_return(int n, char **statico, char **line)
 
 int				get_next_line(int fd, char **line)
 {
-	static char		*statico;
+	static char		*statico[RLIMIT_NOFILE];
 	char			*buffer;
 	int				nbytes;
 
 	if (BUFFER_SIZE <= 0)
 		return (ERROR);
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (buffer == 0 || fd < 0 || line == 0)
+	if (buffer == 0 || fd < 0 || fd > RLIMIT_NOFILE || line == 0)
 	{
 		ft_strdel(&buffer);
 		return (ERROR);

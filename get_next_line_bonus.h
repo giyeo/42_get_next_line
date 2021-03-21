@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:57:42 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/03/21 15:19:44 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/03/21 12:25:36 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stddef.h>
 # include <limits.h>
 # include <sys/resource.h>
+# define BUFFER_SIZE 6
 
 # define EOL			1
 # define FT_EOF			0
